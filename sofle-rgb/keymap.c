@@ -25,25 +25,53 @@
 
 enum sofle_layers {
     _BASE = 0,
+    _CLMK,
+    _GAME,
+    _GNUM,
     _SYM,
     _NAV,
     _FUN
 };
 
 #define MO_SYM  MO(_SYM)
-
 #define MO_NAV  MO(_NAV)
-
 #define MO_FUN  MO(_FUN)
+#define MO_GNUM MO(_GNUM)
+#define TG_CLMK TG(_CLMK)
+#define TG_GAME TG(_GAME)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT(
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG_CLMK, TG_GAME,
   KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    FI_QUOT,
   KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                            KC_H,    KC_J,    KC_K,    KC_L,    FI_ODIA, FI_ADIA,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,        KC_MPLY, KC_N,    KC_M,    FI_COMM, FI_DOT,  FI_MINS, KC_RSFT,
-                    KC_LGUI, KC_LALT, KC_LCTL, MO_SYM, KC_SPC,         KC_ENT,  MO_NAV,  KC_RCTL, KC_RALT, KC_RGUI
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,       KC_MPLY, KC_N,    KC_M,    FI_COMM, FI_DOT,  FI_MINS, KC_RSFT,
+                    KC_LGUI, KC_LALT, KC_LCTL, MO_SYM,  KC_SPC,        KC_ENT,  MO_NAV,  KC_RCTL, KC_RALT, KC_RGUI
+),
+
+[_GAME] = LAYOUT(
+  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______, _______,
+                    _______, _______, _______, MO_GNUM, _______,       _______, _______, _______, _______, _______
+),
+
+[_GNUM] = LAYOUT(
+  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
+  _______, FI_9,    FI_8,    FI_7,    FI_6,    FI_5,                            _______, _______, _______, _______, _______, _______,
+  _______, FI_0,    FI_1,    FI_2,    FI_3,    FI_4,                            _______, _______, _______, _______, _______, _______,
+  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,       _______, _______, _______, _______, _______, _______, _______,
+                    _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
+),
+
+[_CLMK] = LAYOUT(
+  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
+  _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                            KC_J,    KC_L,    KC_U,    KC_Y,    FI_ODIA, _______,
+  _______, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                            KC_M,    KC_N,    KC_E,    KC_I,    FI_O,    FI_ADIA,
+  _______, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    _______,       _______, KC_K,    KC_H,    FI_COMM, FI_DOT,  FI_MINS, _______,
+                    _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 
 [_SYM] = LAYOUT(
@@ -64,9 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_FUN] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, _______, KC_VOLD, KC_MUTE, KC_VOLU, _______,                         _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-  _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                         _______, KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
-  _______, _______, _______, _______, _______, _______, _______,       _______, _______, KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
+  _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX,                         XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
+  _______, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,                         XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,  XXXXXXX,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,       _______, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
                     _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
   )
 };
@@ -89,39 +117,48 @@ static void render_logo(void) {
 }
 
 
-// static void render_status(void) {
-//     // Print current layer
-//     oled_write_ln_P(PSTR("LAYER"), false);
-//     switch (get_highest_layer(layer_state)) {
-//         case _BASE:
-//             oled_write_P(PSTR("BASE\n"), false);
-//             break;
-//         case _NAV:
-//             oled_write_P(PSTR("NAV\n"), false);
-//             break;
-//         case _SYM:
-//             oled_write_P(PSTR("SYM\n"), false);
-//             break;
-//         case _FUN:
-//             oled_write_P(PSTR("FUN\n"), false);
-//             break;
-//         default:
-//             oled_write_ln_P(PSTR("???\n"), false);
-//     }
-// }
+static void render_status(void) {
+    // Print current layer
+    oled_write_ln_P(PSTR("LAYER"), false);
+    switch (get_highest_layer(layer_state)) {
+        case _BASE:
+            oled_write_P(PSTR("BASE\n"), false);
+            break;
+        case _CLMK:
+            oled_write_P(PSTR("CLMK\n"), false);
+            break;
+        case _GAME:
+            oled_write_P(PSTR("GAME\n"), false);
+            break;
+        case _GNUM:
+            oled_write_P(PSTR("GNUM\n"), false);
+            break;
+        case _NAV:
+            oled_write_P(PSTR("NAV\n"), false);
+            break;
+        case _SYM:
+            oled_write_P(PSTR("SYM\n"), false);
+            break;
+        case _FUN:
+            oled_write_P(PSTR("FUN\n"), false);
+            break;
+        default:
+            oled_write_ln_P(PSTR("???\n"), false);
+    }
+}
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_master()) {
-        // return OLED_ROTATION_270;
-        return OLED_ROTATION_180;
+        return OLED_ROTATION_270;
+        // return OLED_ROTATION_180;
     }
     return rotation;
 }
 
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        // render_status();
-        render_logo();
+        render_status();
+        // render_logo();
     } else {
         render_logo();
     }
@@ -132,21 +169,12 @@ bool oled_task_user(void) {
 
 #ifdef ENCODER_ENABLE
 
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
-            tap_code(KC_VOLU);
-        }
-    } else if (index == 1) {
-        if (clockwise) {
-            tap_code(KC_MPRV);
-        } else {
-            tap_code(KC_MNXT);
-        }
-    }
-    return true;
-}
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
+    [_BASE] = { ENCODER_CCW_CW(KC_VOLD,  KC_VOLU),       ENCODER_CCW_CW(KC_PGUP,  KC_PGDN) },
+    [_SYM]  = { ENCODER_CCW_CW(_______,  _______),       ENCODER_CCW_CW(S(KC_TAB), KC_TAB) },
+    [_NAV]  = { ENCODER_CCW_CW(LCTL(KC_Z), LCTL(KC_Y)),  ENCODER_CCW_CW(_______,  _______) },
+};
+#endif
 
 #endif
