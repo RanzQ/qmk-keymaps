@@ -26,8 +26,6 @@
 enum sofle_layers {
     _BASE = 0,
     _CLMK,
-    _GAME,
-    _GNUM,
     _SYM,
     _NAV,
     _FUN
@@ -36,34 +34,16 @@ enum sofle_layers {
 #define MO_SYM  MO(_SYM)
 #define MO_NAV  MO(_NAV)
 #define MO_FUN  MO(_FUN)
-#define MO_GNUM MO(_GNUM)
 #define TG_CLMK TG(_CLMK)
-#define TG_GAME TG(_GAME)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT(
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG_CLMK, TG_GAME,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG_CLMK,
   KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    FI_QUOT,
   KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                            KC_H,    KC_J,    KC_K,    KC_L,    FI_ODIA, FI_ADIA,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,       KC_MPLY, KC_N,    KC_M,    FI_COMM, FI_DOT,  FI_MINS, KC_RSFT,
                     KC_LGUI, KC_LALT, KC_LCTL, MO_SYM,  KC_SPC,        KC_ENT,  MO_NAV,  KC_RCTL, KC_RALT, KC_RGUI
-),
-
-[_GAME] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______, _______,
-                    _______, _______, _______, MO_GNUM, _______,       _______, _______, _______, _______, _______
-),
-
-[_GNUM] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, FI_9,    FI_8,    FI_7,    FI_6,    FI_5,                            _______, _______, _______, _______, _______, _______,
-  _______, FI_0,    FI_1,    FI_2,    FI_3,    FI_4,                            _______, _______, _______, _______, _______, _______,
-  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,       _______, _______, _______, _______, _______, _______, _______,
-                    _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 
 [_CLMK] = LAYOUT(
@@ -127,12 +107,6 @@ static void render_status(void) {
         case _CLMK:
             oled_write_P(PSTR("CLMK\n"), false);
             break;
-        case _GAME:
-            oled_write_P(PSTR("GAME\n"), false);
-            break;
-        case _GNUM:
-            oled_write_P(PSTR("GNUM\n"), false);
-            break;
         case _NAV:
             oled_write_P(PSTR("NAV\n"), false);
             break;
@@ -172,8 +146,6 @@ bool oled_task_user(void) {
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_BASE] = { ENCODER_CCW_CW(KC_VOLD,  KC_VOLU),       ENCODER_CCW_CW(KC_PGUP,  KC_PGDN) },
-    [_GAME] = { ENCODER_CCW_CW(_______,  _______),       ENCODER_CCW_CW(_______,  _______) },
-    [_GNUM] = { ENCODER_CCW_CW(_______,  _______),       ENCODER_CCW_CW(_______,  _______) },
     [_CLMK] = { ENCODER_CCW_CW(_______,  _______),       ENCODER_CCW_CW(_______,  _______) },
     [_SYM]  = { ENCODER_CCW_CW(_______,  _______),       ENCODER_CCW_CW(S(KC_TAB), KC_TAB) },
     [_NAV]  = { ENCODER_CCW_CW(LCTL(KC_Z), LCTL(KC_Y)),  ENCODER_CCW_CW(_______,  _______) },
