@@ -42,6 +42,10 @@
 #endif
 // #define ENCODER_DIRECTION_FLIP
 
+#ifdef COMBO_ENABLE
+    #undef COMBO_COUNT
+    #define COMBO_COUNT 5
+#endif
 
 #define RGBLIGHT_SLEEP
 //

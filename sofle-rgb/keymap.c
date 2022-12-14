@@ -31,52 +31,73 @@ enum sofle_layers {
     _FUN
 };
 
+// enum combos {
+//   CB_ESC,
+//   CB_TAB,
+//   CB_BSPC,
+//   CB_ENT,
+//   CB_DEL,
+// };
+
+// const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_E, COMBO_END};
+// const uint16_t PROGMEM combo_tab[]  = {KC_X, KC_C, COMBO_END};
+// const uint16_t PROGMEM combo_bspc[] = {KC_I, FI_O, COMBO_END};
+// const uint16_t PROGMEM combo_ent[]  = {FI_COMM, FI_DOT, COMBO_END};
+// const uint16_t PROGMEM combo_del[]  = {FI_DOT, FI_ADIA, COMBO_END};
+
+// combo_t key_combos[COMBO_COUNT] = {
+//   [CB_ESC]  = COMBO(combo_esc, KC_ESC),
+//   [CB_TAB]  = COMBO(combo_tab, KC_TAB),
+//   [CB_BSPC] = COMBO(combo_bspc, KC_BSPC),
+//   [CB_ENT]  = COMBO(combo_ent, KC_ENT),
+//   [CB_DEL]  = COMBO(combo_del, KC_DEL),
+// };
+
 #define MO_SYM  MO(_SYM)
 #define MO_NAV  MO(_NAV)
-#define MO_FUN  MO(_FUN)
 #define TG_CLMK TG(_CLMK)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG_CLMK,
-  KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    FI_QUOT,
-  KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                            KC_H,    KC_J,    KC_K,    KC_L,    FI_ODIA, FI_ADIA,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,       KC_MPLY, KC_N,    KC_M,    FI_COMM, FI_DOT,  FI_MINS, KC_RSFT,
-                    KC_LGUI, KC_LALT, KC_LCTL, MO_SYM,  KC_SPC,        KC_ENT,  MO_NAV,  KC_RCTL, KC_RALT, KC_RGUI
+  XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    XXXXXXX,
+  XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                            KC_H,    KC_J,    KC_K,    KC_L,    FI_ODIA, XXXXXXX,
+  XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,       KC_MPLY, KC_N,    KC_M,    FI_COMM, FI_DOT,  FI_ADIA, XXXXXXX,
+                    KC_LGUI, KC_LALT, KC_LCTL, MO_SYM,  KC_SPC,        KC_LSFT, MO_NAV,  KC_RCTL, KC_RALT, KC_RGUI
 ),
 
 [_CLMK] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
   _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                            KC_J,    KC_L,    KC_U,    KC_Y,    FI_ODIA, _______,
-  _______, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                            KC_M,    KC_N,    KC_E,    KC_I,    FI_O,    FI_ADIA,
-  _______, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    _______,       _______, KC_K,    KC_H,    FI_COMM, FI_DOT,  FI_MINS, _______,
+  _______, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                            KC_M,    KC_N,    KC_E,    KC_I,    FI_O,    _______,
+  _______, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    _______,       _______, KC_K,    KC_H,    FI_COMM, FI_DOT,  FI_ADIA, _______,
                     _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 
 [_SYM] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, XXXXXXX, FI_PERC, FI_DLR,  FI_EURO, XXXXXXX,                         XXXXXXX, FI_TILD, FI_CIRC, FI_DQUO,  FI_GRV, FI_QUOT,
-  _______, FI_LABK, FI_LCBR, FI_LBRC, FI_LPRN, FI_BSLS,                         FI_SLSH, FI_RPRN, FI_RBRC, FI_RCBR, FI_RABK, XXXXXXX,
-  _______, FI_EXLM, FI_AT,   FI_HASH, FI_AMPR, FI_PIPE, _______,       _______, FI_ASTR, FI_EQL,  FI_PLUS, FI_MINS, FI_QUES, _______,
-                    _______, _______, _______, _______, _______,        KC_TAB, _______, _______, _______, _______
+  _______, KC_ESC,  FI_PERC, FI_DLR,  FI_EURO, XXXXXXX,                         FI_CIRC, FI_TILD, FI_QUOT, FI_DQUO, FI_GRV,  _______,
+  _______, FI_LABK, FI_LCBR, FI_LBRC, FI_LPRN, FI_BSLS,                         FI_SLSH, FI_RPRN, FI_RBRC, FI_RCBR, FI_RABK, _______,
+  _______, FI_EXLM, FI_AT,   FI_HASH, FI_AMPR, FI_PIPE, _______,       _______, FI_ASTR, FI_MINS, FI_EQL,  FI_PLUS, FI_QUES, _______,
+                    _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 
 [_NAV] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, FI_COMM, FI_7,    FI_8,    FI_9,    FI_MINS,                         KC_PGUP, XXXXXXX, KC_UP,   KC_DEL,  KC_PSCR, XXXXXXX,
-  _______, FI_DOT,  FI_4,    FI_5,    FI_6,    FI_PLUS,                         KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
-  _______, FI_0,    FI_1,    FI_2,    FI_3,    FI_EQL,  _______,       _______, KC_INS,  KC_HOME, XXXXXXX, KC_END,  XXXXXXX, _______,
-                    _______, _______, _______, _______, KC_BSPC,       _______, _______, _______, _______, _______
+  _______, KC_ESC,  FI_7,    FI_8,    FI_9,    XXXXXXX,                         XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP, _______,
+  _______, KC_TAB,  FI_4,    FI_5,    FI_6,    XXXXXXX,                         XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
+  _______, FI_0,    FI_1,    FI_2,    FI_3,    XXXXXXX, _______,       _______, XXXXXXX, KC_BSPC, KC_ENT,  KC_DEL,  XXXXXXX, _______,
+                    _______, _______, _______, _______, KC_LSFT,       _______, _______, _______, _______, _______
 ),
 
 [_FUN] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX,                         XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
-  _______, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,                         XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,  XXXXXXX,
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,       _______, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
+  _______, KC_F10,  KC_F7,   KC_F8,   KC_F9,   XXXXXXX,                         XXXXXXX, KC_INS,  KC_PSCR, XXXXXXX, XXXXXXX, _______,
+  _______, KC_F11,  KC_F4,   KC_F5,   KC_F6,   XXXXXXX,                         XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, _______,
+  _______, KC_F12,  KC_F1,   KC_F2,   KC_F3,   XXXXXXX, _______,       _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, _______,
                     _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
-  )
+)
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
