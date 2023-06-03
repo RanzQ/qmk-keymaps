@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
   _______, KC_F10,  KC_F7,   KC_F8,   KC_F9,   XXXXXXX,                         XXXXXXX, KC_INS,  KC_PSCR, XXXXXXX, XXXXXXX, _______,
   _______, KC_F11,  KC_F4,   KC_F5,   KC_F6,   XXXXXXX,                         XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, _______,
-  _______, KC_F12,  KC_F1,   KC_F2,   KC_F3,   XXXXXXX, _______,       _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, _______,
+  _______, KC_F12,  KC_F1,   KC_F2,   KC_F3,   XXXXXXX, _______,       RGB_TOG, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, _______,
                     _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 )
 };
@@ -168,9 +168,9 @@ bool oled_task_user(void) {
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_BASE] = { ENCODER_CCW_CW(KC_VOLD,  KC_VOLU),       ENCODER_CCW_CW(KC_PGUP,  KC_PGDN) },
     [_CLMK] = { ENCODER_CCW_CW(_______,  _______),       ENCODER_CCW_CW(_______,  _______) },
-    [_SYM]  = { ENCODER_CCW_CW(_______,  _______),       ENCODER_CCW_CW(S(KC_TAB), KC_TAB) },
-    [_NAV]  = { ENCODER_CCW_CW(LCTL(KC_Z), LCTL(KC_Y)),  ENCODER_CCW_CW(_______,  _______) },
-    [_FUN]  = { ENCODER_CCW_CW(_______,  _______),       ENCODER_CCW_CW(_______,  _______) }
+    [_SYM]  = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD),       ENCODER_CCW_CW(S(KC_TAB), KC_TAB) },
+    [_NAV]  = { ENCODER_CCW_CW(LCTL(KC_Z), LCTL(KC_Y)),  ENCODER_CCW_CW(RGB_SPD,  RGB_SPI) },
+    [_FUN]  = { ENCODER_CCW_CW(RGB_HUD,  RGB_HUI),       ENCODER_CCW_CW(RGB_VAD, RGB_VAI) }
 };
 #endif
 
